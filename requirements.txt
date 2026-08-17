@@ -1,0 +1,9 @@
+scipy
+numpy
+pandas
+matplotlib
+biopython
+ete3
+zstandard
+brotli
+pyppmd
