@@ -4,14 +4,14 @@
 
 Este repositório contém o código fonte e os dados do pipeline computacional desenvolvido para o artigo *"Normalized Compression Distance for Phylogenetic Tree Reconstruction"*, submetido ao evento BSB 2026 (Sociedade Brasileira de Computação). O projeto aplica a **Distância de Compressão Normalizada (NCD)** com compressores padrão (zstd, bzip2, brotli, ppmd) e a heurística gramatical **IRR-C** para inferir filogenias a partir de genomas mitocondriais de mamíferos.
 
-## 👥 Autores
+## Autores
 - **João Victor Pariz** (Aluno de Iniciação Científica)
 - **Prof. Alex de Vasconcellos Garcia** (Orientador - IME)
 - **Prof. Edward Hermann Haeusler** (Orientador - PUC-Rio)
 
 ---
 
-## 📂 Estrutura do Repositório
+## Estrutura do Repositório
 
 * `dados/genomas/`: Sequências genômicas mitocondriais originais (mtDNA) em formato texto.
 * `Resultados/arvores/`: Árvores filogenéticas pré-computadas (.nwk) e árvore padrão-ouro MCC de referência.
@@ -22,7 +22,7 @@ Este repositório contém o código fonte e os dados do pipeline computacional d
 
 ---
 
-## 🚀 Como testar e reproduzir
+## Como testar e reproduzir
 
 ### 1. Requisitos
 Crie um ambiente virtual com Python 3.9+ e instale as dependências listadas:
@@ -55,7 +55,7 @@ python codigos/Graficos/gerar_figuras_artigo.py
 
 ---
 
-## 📜 Citação
+## Citação
 
 Se utilizar este código ou os resultados gerados, por favor cite nosso trabalho:
 
