@@ -33,3 +33,6 @@ Thumbs.db
 # Ignorar as matrizes dinamicas caso o usuario as gere
 resultados_ncd/
 resultados_filogenia/
+
+# Ignorar arvores geradas dinamicamente com prefixo ncd-
+Resultados/arvores/ncd-*

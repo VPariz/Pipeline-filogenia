@@ -160,14 +160,19 @@ def salvar_newick_automatico(string_newick, nome_base_arquivo, metodo, pasta_des
 # ====================================================================
 
 def main():
-    # Verifica se há arquivos .txt no diretório de entrada
-    if not os.path.exists(PASTA_ENTRADA):
-        print(f"Pasta '{PASTA_ENTRADA}' não encontrada. Rode o compressor.py primeiro.")
-        sys.exit(1)
+    pasta_busca = PASTA_ENTRADA
+    if not os.path.exists(pasta_busca) or not [f for f in os.listdir(pasta_busca) if f.endswith('.txt')]:
+        alt_pasta = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "Resultados", "matrizes"))
+        if os.path.exists(alt_pasta) and [f for f in os.listdir(alt_pasta) if f.endswith('.txt')]:
+            pasta_busca = alt_pasta
+            print(f"Nota: utilizando matrizes NCD pré-computadas de '{alt_pasta}'.\n")
+        else:
+            print(f"Pasta '{pasta_busca}' não encontrada. Rode o compressor.py primeiro.")
+            sys.exit(1)
         
-    arquivos_txt = [f for f in os.listdir(PASTA_ENTRADA) if f.endswith('.txt')]
+    arquivos_txt = [f for f in os.listdir(pasta_busca) if f.endswith('.txt')]
     if not arquivos_txt:
-        print(f"Nenhum arquivo .txt encontrado em '{PASTA_ENTRADA}'. Encerrando.")
+        print(f"Nenhum arquivo .txt encontrado em '{pasta_busca}'. Encerrando.")
         sys.exit(0)
 
     # Cria a pasta de saída (se não existir)
@@ -185,7 +190,7 @@ def main():
         print(f"\n>>> Processando: {arquivo}")
 
         # Carrega a matriz NCD
-        caminho_arquivo = os.path.join(PASTA_ENTRADA, arquivo)
+        caminho_arquivo = os.path.join(pasta_busca, arquivo)
         matriz, nomes = carregar_matriz_ncd(caminho_arquivo)
         if matriz is None or nomes is None:
             print(f"  [ERRO] Não foi possível carregar {arquivo}. Pulando.")

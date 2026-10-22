@@ -1,0 +1,16 @@
+compressor,clustering,rf_absolute,nrf,cts,p_value
+zstd,UPGMA,4,0.1176,3.0,<0.005
+zstd,Complete Linkage,4,0.1176,3.0,<0.005
+zstd,Neighbor-Joining,4,0.1176,4.0,<0.005
+brotli,UPGMA,4,0.1176,3.0,<0.005
+brotli,Complete Linkage,4,0.1176,3.5,<0.005
+brotli,Neighbor-Joining,4,0.1176,4.0,<0.005
+PPMD,UPGMA,4,0.1176,3.0,<0.005
+PPMD,Complete Linkage,4,0.1176,3.0,<0.005
+PPMD,Neighbor-Joining,4,0.1176,4.0,<0.005
+IRR-C,Neighbor-Joining,10,0.2941,4.5,<0.005
+IRR-C,UPGMA,14,0.4118,5.0,<0.005
+IRR-C,Complete Linkage,16,0.4706,5.0,<0.005
+bzip2,Neighbor-Joining,4,0.1176,5.0,<0.005
+bzip2,UPGMA,6,0.1765,4.0,<0.005
+bzip2,Complete Linkage,6,0.1765,4.5,<0.005

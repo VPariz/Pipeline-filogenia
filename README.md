@@ -13,12 +13,16 @@ Este repositório contém o código fonte e os dados do pipeline computacional d
 
 ## Estrutura do Repositório
 
-* `dados/genomas/`: Sequências genômicas mitocondriais originais (mtDNA) em formato texto.
-* `Resultados/arvores/`: Árvores filogenéticas pré-computadas (.nwk) e árvore padrão-ouro MCC de referência.
-* `codigos/pipeline_basico/`: Scripts computacionais essenciais do pipeline.
-  * `compressor.py`: Processa as sequências de DNA e gera as matrizes de distância NCD.
-  * `gerador_arvores.py`: Lê as matrizes geradas e constrói as árvores `.nwk` utilizando algoritmos de agrupamento hierárquico (UPGMA, Linkagem Completa, Neighbor-Joining).
-* `codigos/Graficos/`: Interface gráfica e módulos de análise topológica. Lê as árvores resultantes, calcula métricas de erro topológico (RF, nRF e CTS) contra o padrão-ouro e plota as imagens e cladogramas utilizados no artigo.
+* dados/genomas/: Sequências genômicas mitocondriais originais (mtDNA) em formato .txt e tabela descritiva completa com identificadores de acesso do **NCBI GenBank** e extensões em pares de bases (README.md).
+* Resultados/:
+  * matrizes/: Matrizes de distância NCD canônicas pré-computadas (.txt) para todos os compressores (zstd, rotli, zip2, ppmd, ficd/IRR-C), permitindo reprodução instantânea e importação para outros pacotes estatísticos (R / MEGA / Python).
+  * rvores/: Árvores filogenéticas Newick (.nwk) pré-computadas para as 15 combinações compressor + algoritmo e a árvore de consenso bayesiana padrão-ouro MCC (modelo.nwk).
+  * 
+esumo_metricas.csv: Tabela estruturada consolidando todas as métricas topológicas (RF, nRF e CTS) publicadas no artigo.
+* codigos/pipeline_basico/: Scripts computacionais essenciais do pipeline.
+  * compressor.py: Processa as sequências de DNA e gera as matrizes de distância NCD.
+  * gerador_arvores.py: Lê as matrizes geradas (ou as matrizes pré-computadas em Resultados/matrizes/) e constrói as árvores .nwk utilizando algoritmos de agrupamento hierárquico (UPGMA, Linkagem Completa, Neighbor-Joining).
+* codigos/Graficos/: Interface gráfica e módulos de análise topológica. Lê as árvores resultantes, calcula métricas de erro topológico (RF, nRF e CTS) contra o padrão-ouro e plota as imagens e cladogramas utilizados no artigo.
 
 ---
 
