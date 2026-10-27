@@ -11,8 +11,8 @@
 
 ## Sobre o Projeto
 
-Este repositório contém o código fonte, dados e pipelines computacionais desenvolvidos para o artigo:  
-**"Normalized Compression Distance for Phylogenetic Tree Reconstruction"** (*Pariz, Garcia & Haeusler*).
+Este repositório contém o código fonte, dados e pipelines computacionais desenvolvidos para o projeto de Iniciação Científica (PIBIC/CNPq) no IME e PUC-Rio:  
+**"Grammar-Based Compression for Evolutionary Distance Estimation: Mammalian Phylogenetics via NCD"** (*Pariz, Garcia & Haeusler*).
 
 O trabalho investiga a aplicação da **Distância de Compressão Normalizada (NCD)** — fundamentada na Complexidade de Kolmogorov — para a reconstrução de árvores filogenéticas a partir de genomas mitocondriais completos (mtDNA) de mamíferos sem a necessidade de alinhamento sequencial múltiplo prévio.
 
@@ -97,11 +97,11 @@ python codigos/Graficos/gerar_figuras_artigo.py
 Se utilizar este código ou os resultados gerados em sua pesquisa, por favor cite:
 
 ```bibtex
-@inproceedings{pariz2026ncd,
-  title={Normalized Compression Distance for Phylogenetic Tree Reconstruction},
+@inproceedings{pariz2026xmeeting,
+  title={Grammar-Based Compression for Evolutionary Distance Estimation: Mammalian Phylogenetics via NCD},
   author={Pariz, Jo{\~a}o Victor and Garcia, Alex de Vasconcellos and Haeusler, Edward Hermann},
-  booktitle={Anais do Simp{\'o}sio Brasileiro de Bioinform{\'a}tica (BSB)},
+  booktitle={X-Meeting 2026 -- Brazilian Association of Bioinformatics and Computational Biology},
   year={2026},
-  publisher={SBC}
+  organization={AB3C}
 }
 ```
