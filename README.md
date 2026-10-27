@@ -1,67 +1,101 @@
-# NCD Phylogeny Pipeline
+# Pipeline de Filogenia via Compressão (NCD)
 
-**Projeto de Iniciação Científica (PIBIC) — Submetido ao BSB 2026**
+[![Paper](https://img.shields.io/badge/Paper-BSB_2026-blue?style=flat-square&logo=academia&logoColor=white)](https://github.com/VPariz/Pipeline-filogenia)
+[![Poster](https://img.shields.io/badge/Poster-X--Meeting_2026-green?style=flat-square)](https://github.com/VPariz/Pipeline-filogenia)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
-Este repositório contém o código fonte e os dados do pipeline computacional desenvolvido para o artigo *"Normalized Compression Distance for Phylogenetic Tree Reconstruction"*, submetido ao evento BSB 2026 (Sociedade Brasileira de Computação). O projeto aplica a **Distância de Compressão Normalizada (NCD)** com compressores padrão (zstd, bzip2, brotli, ppmd) e a heurística gramatical **IRR-C** para inferir filogenias a partir de genomas mitocondriais de mamíferos.
+**Projeto de Iniciação Científica (PIBIC/CNPq) — Instituto Militar de Engenharia (IME) & PUC-Rio**  
+*Artigo Submetido ao Simpósio Brasileiro de Bioinformática (BSB 2026 / Sociedade Brasileira de Computação - SBC)*
 
-## Autores
-- **João Victor Pariz** (Aluno de Iniciação Científica)
-- **Prof. Alex de Vasconcellos Garcia** (Orientador - IME)
-- **Prof. Edward Hermann Haeusler** (Orientador - PUC-Rio)
+---
+
+## Sobre o Projeto
+
+Este repositório contém o código fonte, dados e pipelines computacionais desenvolvidos para o artigo:  
+**"Normalized Compression Distance for Phylogenetic Tree Reconstruction"** (*Pariz, Garcia & Haeusler*).
+
+O trabalho investiga a aplicação da **Distância de Compressão Normalizada (NCD)** — fundamentada na Complexidade de Kolmogorov — para a reconstrução de árvores filogenéticas a partir de genomas mitocondriais completos (mtDNA) de mamíferos sem a necessidade de alinhamento sequencial múltiplo prévio.
+
+### Compressores Avaliados
+1. **Compressores Estatísticos Modernos:** `zstd` (nível 22), `brotli` (qualidade 11) e `ppmd` (ordem 16, 64 MB).
+2. **Heurística Gramatical Aumentada (ACFG):** Algoritmo `IRR-C` (desenvolvido pelo grupo com identificação de homologia estrutural).
+3. **Benchmark Clássico:** `bzip2` (nível -9).
+
+### Algoritmos de Agrupamento Hierárquico
+- **UPGMA** (Unweighted Pair Group Method with Arithmetic Mean)
+- **Complete Linkage**
+- **Neighbor-Joining (NJ)**
+
+### Validação Topológica
+As árvores obtidas são validadas estatisticamente contra a **Árvore de Consenso Bayesiana Padrão-Ouro (MCC / VertLife, Upham et al., 2019)** derivada de 10.000 árvores de 31 genes nucleares através das métricas:
+- **RF (Robinson-Foulds)** e **nRF (Robinson-Foulds Normalizado)**
+- **CTS (Custom Topological Score)** — penalização ponderada de clados ancestrais
+- Testes de permutação de **Monte Carlo (p-valor < 0,005)**
+
+---
+
+## Autores & Orientadores
+
+- **João Victor Pariz** (Pesquisador de Iniciação Científica - IME)
+- **Prof. Alex de Vasconcellos Garcia, D.Sc.** (Orientador - IME)
+- **Prof. Edward Hermann Haeusler, Ph.D.** (Orientador - PUC-Rio)
 
 ---
 
 ## Estrutura do Repositório
 
-* dados/genomas/: Sequências genômicas mitocondriais originais (mtDNA) em formato .txt e tabela descritiva completa com identificadores de acesso do **NCBI GenBank** e extensões em pares de bases (README.md).
-* Resultados/:
-  * matrizes/: Matrizes de distância NCD canônicas pré-computadas (.txt) para todos os compressores (zstd, rotli, zip2, ppmd, ficd/IRR-C), permitindo reprodução instantânea e importação para outros pacotes estatísticos (R / MEGA / Python).
-  * rvores/: Árvores filogenéticas Newick (.nwk) pré-computadas para as 15 combinações compressor + algoritmo e a árvore de consenso bayesiana padrão-ouro MCC (modelo.nwk).
-  * 
-esumo_metricas.csv: Tabela estruturada consolidando todas as métricas topológicas (RF, nRF e CTS) publicadas no artigo.
-* codigos/pipeline_basico/: Scripts computacionais essenciais do pipeline.
-  * compressor.py: Processa as sequências de DNA e gera as matrizes de distância NCD.
-  * gerador_arvores.py: Lê as matrizes geradas (ou as matrizes pré-computadas em Resultados/matrizes/) e constrói as árvores .nwk utilizando algoritmos de agrupamento hierárquico (UPGMA, Linkagem Completa, Neighbor-Joining).
-* codigos/Graficos/: Interface gráfica e módulos de análise topológica. Lê as árvores resultantes, calcula métricas de erro topológico (RF, nRF e CTS) contra o padrão-ouro e plota as imagens e cladogramas utilizados no artigo.
+```
+Pipeline-filogenia/
+├── dados/genomas/            # Sequências genômicas mitocondriais (NCBI GenBank) em .txt
+├── Resultados/
+│   ├── matrizes/             # Matrizes de distância NCD canônicas pré-computadas (.txt)
+│   ├── arvores/              # Árvores Newick (.nwk) para as 15 combinações e árvore MCC
+│   └── resumo_metricas.csv   # Tabela consolidada de métricas topológicas (RF, nRF, CTS)
+├── codigos/
+│   ├── pipeline_basico/
+│   │   ├── compressor.py     # Processamento genômico e cálculo das matrizes NCD
+│   │   └── gerador_arvores.py# Agrupamento hierárquico e geração de árvores .nwk
+│   └── Graficos/
+│       ├── main.py           # Interface gráfica de visualização topológica
+│       └── gerar_figuras_artigo.py # Script para reproduzir as figuras exatas do paper
+└── requirements.txt
+```
 
 ---
 
-## Como testar e reproduzir
+## Como Testar e Reproduzir
 
 ### 1. Requisitos
-Crie um ambiente virtual com Python 3.9+ e instale as dependências listadas:
+Crie um ambiente virtual com Python 3.9+ e instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
 
-As principais bibliotecas utilizadas são: `scipy`, `numpy`, `pandas`, `matplotlib`, `biopython`, `ete3`, e bibliotecas de compressão (`zstandard`, `brotli`, `pyppmd`).
-
 ### 2. Rodando o Pipeline Completo
-Se desejar gerar as matrizes e as árvores do zero a partir das sequências de genomas, navegue até a pasta `codigos/pipeline_basico/` e execute:
+Para gerar as matrizes e as árvores do zero:
 ```bash
+cd codigos/pipeline_basico/
 python compressor.py
 python gerador_arvores.py
 ```
-*(Nota: Certifique-se de ter os utilitários de sistema bzip2 instalados para o funcionamento de todas as compressões).*
 
-### 3. Interface de Visualização e Métricas
-Para visualizar as árvores geradas, comparar métricas topológicas (RF vs CTS) e reproduzir os gráficos exatos publicados no artigo, utilize a nossa interface visual:
+### 3. Interface Gráfica & Figuras do Artigo
+Para abrir a interface gráfica interativa de análise topológica:
 ```bash
 python codigos/Graficos/main.py
 ```
-Você também pode gerar todas as figuras do artigo automaticamente executando:
+
+Para exportar todas as figuras publicadas no artigo:
 ```bash
 python codigos/Graficos/gerar_figuras_artigo.py
 ```
 
 ---
-**Aviso:** Os scripts contêm um modo de operação de diagnóstico/legado (`replica_bat`) focado apenas em rastreabilidade de bugs antigos dos experimentos; **os resultados canônicos validados no artigo derivam do modo `linear_puro`**.
-
----
 
 ## Citação
 
-Se utilizar este código ou os resultados gerados, por favor cite nosso trabalho:
+Se utilizar este código ou os resultados gerados em sua pesquisa, por favor cite:
 
 ```bibtex
 @inproceedings{pariz2026ncd,
