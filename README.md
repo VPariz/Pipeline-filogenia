@@ -1,12 +1,11 @@
 # Pipeline de Filogenia via Compressão (NCD)
 
-[![Paper](https://img.shields.io/badge/Paper-BSB_2026-blue?style=flat-square&logo=academia&logoColor=white)](https://github.com/VPariz/Pipeline-filogenia)
-[![Poster](https://img.shields.io/badge/Poster-X--Meeting_2026-green?style=flat-square)](https://github.com/VPariz/Pipeline-filogenia)
+[![Poster](https://img.shields.io/badge/Poster-X--Meeting_2026-green?style=flat-square&logo=academia&logoColor=white)](https://github.com/VPariz/Pipeline-filogenia)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 **Projeto de Iniciação Científica (PIBIC/CNPq) — Instituto Militar de Engenharia (IME) & PUC-Rio**  
-*Artigo Submetido ao Simpósio Brasileiro de Bioinformática (BSB 2026 / Sociedade Brasileira de Computação - SBC)*
+*Pesquisa de Iniciação Científica desenvolvida no IME e PUC-Rio | Resumo & Pôster no X-Meeting 2026 (AB3C)*
 
 ---
 
