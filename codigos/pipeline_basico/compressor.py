@@ -7,7 +7,7 @@ Tem 2 modos aqui dentro:
 1) replica_bat: Modo antigo so pra testar e comparar com os resultados velhos
    imitando o jeito que os scripts originais formatavam o texto (com as
    quebras de linha \r\n etc), mas essa parte nao entra no artigo final
-2) linear_puro: A forma certa (e que gerou os resultados do BSB). Le a sequencia 
+2) linear_puro: A forma certa (e que gerou os resultados oficiais). Le a sequencia 
    inteira limpinha em uppercase, junta com um '$' e guarda o valor NCD real em float.
 """
 

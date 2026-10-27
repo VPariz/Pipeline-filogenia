@@ -2,7 +2,7 @@
 """
 gerar_figuras_artigo.py
 ------------------------
-Script pra gerar as imagens em alta definicao pro artigo do BSB 2026.
+Script pra gerar as imagens em alta definicao pro artigo cientifico (X-Meeting 2026).
 
 Gera as seguintes imagens:
   - mcc_tree.png           : Nossa arvore base (VertLife)
@@ -49,9 +49,7 @@ import comparador as cmp
 _PIBIC_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", ".."))
 
 PASTA_ARVORES = os.path.join(_PIBIC_ROOT, "Resultados", "arvores")
-DESTINO_PADRAO = os.path.join(
-    _PIBIC_ROOT, "ProduçãoEscrita", "BSB2026", "rascunho"
-)
+DESTINO_PADRAO = os.path.join(_PIBIC_ROOT, "Resultados", "figuras_artigo")
 
 ARVORE_MODELO = os.path.join(PASTA_ARVORES, "modelo.nwk")
 ARVORE_ZSTD_CL = os.path.join(PASTA_ARVORES, "zstd_complete_linkage.nwk")
@@ -236,7 +234,7 @@ def gerar_figuras_irrc_bzip2(destino: str, lang: str = "pt", sufixo: str = ""):
 # ---------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(
-        description="Gera as figuras do artigo BSB 2026 a partir das árvores em Resultados/arvores/"
+        description="Gera as figuras do artigo (X-Meeting 2026) a partir das árvores em Resultados/arvores/"
     )
     parser.add_argument(
         "--destino", "-d",

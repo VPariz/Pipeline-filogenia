@@ -36,7 +36,7 @@ def main():
     md += "- **O Trade-off do Ficd:** A gramática Ficd/21g possui uma média CTS de 4,83, sendo melhor que a média do bzip2 (4,50? Não, bzip2 é 4,50, Ficd é 4,83 na média geral). Porém, a correlação linear de distâncias (Pearson $r$) do Ficd é severamente menor (0,52 vs ~0,78 dos modernos), o que explica seu alto nRF (0,39).\n"
     md += "- **Correlação vs Topologia:** Observa-se que uma correlação de Pearson acima de 0,75 é necessária (mas não suficiente) para atingir nRF próximo a 0,11. O bzip2 possui Pearson em torno de 0,60, o que justifica a degradação de sua topologia sob métodos hierárquicos.\n"
 
-    with open("../../ProduçãoEscrita/BSB2026/rascunho/analise_adicional.md", "w", encoding="utf-8") as f:
+    with open("../../Resultados/analise_adicional.md", "w", encoding="utf-8") as f:
         f.write(md)
         
     print("Análise adicional gerada em analise_adicional.md!")
