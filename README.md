@@ -1,5 +1,6 @@
 # Phylogenomics Pipeline via Compression (NCD)
 
+[![Phylogenomics CI](https://github.com/VPariz/Pipeline-filogenia/actions/workflows/ci.yml/badge.svg)](https://github.com/VPariz/Pipeline-filogenia/actions/workflows/ci.yml)
 [![Poster](https://img.shields.io/badge/Poster-X--Meeting_2026-green?style=flat-square&logo=academia&logoColor=white)](https://github.com/VPariz/Pipeline-filogenia)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
@@ -14,7 +15,11 @@
 This repository contains the source code, genomic datasets, and analytical pipelines developed for the PIBIC/CNPq research project at IME and PUC-Rio:  
 **"Grammar-Based Compression for Evolutionary Distance Estimation: Mammalian Phylogenetics via NCD"** (*Pariz, Garcia & Haeusler*).
 
-The study investigates the performance of **Normalized Compression Distance (NCD)** — grounded in Algorithmic Information Theory (Kolmogorov Complexity) — for alignment-free phylogenetic tree reconstruction across complete mammalian mitochondrial genomes (mtDNA).
+The study investigates the performance of **Normalized Compression Distance (NCD)** — grounded in Algorithmic Information Theory (Kolmogorov Complexity) — for alignment-free phylogenetic tree reconstruction across complete mammalian mitochondrial genomes (mtDNA):
+
+$$NCD(x, y) = \frac{C(xy) - \min(C(x), C(y))}{\max(C(x), C(y))}$$
+
+where $C(x)$ represents the compressed size of sequence $x$, and $C(xy)$ is the compressed size of the concatenated sequence $xy$.
 
 ### 🗜️ Evaluated Compression Algorithms
 1. **Modern Statistical Compressors:** `zstd` (level 22), `brotli` (quality 11), and `ppmd` (order 16, 64 MB memory limit).
